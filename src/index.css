@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Импорт всех стилей */
+@import "./styles/variables.css";
+@import "./styles/globals.css";
+@import "./styles/animations.css";

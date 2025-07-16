@@ -1,0 +1,10 @@
+services:
+  web-nginx:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: web-nginx
+    image: inchange/web-nginx
+    ports:
+      - 8080:80/tcp
+    restart: unless-stopped

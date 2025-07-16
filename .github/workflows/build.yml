@@ -1,0 +1,27 @@
+name: Build Docker Image
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -f docker/Dockerfile -t inchange/web-nginx:latest .
+
+      - name: Save Docker image
+        run: |
+          docker save inchange/web-nginx:latest -o web-nginx.tar
+
+      - name: Upload Docker image as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-nginx
+          path: web-nginx.tar
+          retention-days: 1
