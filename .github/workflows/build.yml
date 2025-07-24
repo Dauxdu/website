@@ -11,13 +11,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: |
-          docker build -f docker/Dockerfile -t inchange/web-nginx:latest .
+      - name: Set short SHA
+        run: echo "GITHUB_SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-      - name: Save Docker image
+      - name: Build Docker image
+        env:
+          TAG: sha-${{ env.GITHUB_SHORT_SHA }}
         run: |
-          docker save inchange/web-nginx:latest -o web-nginx.tar
+          docker build -f docker/Dockerfile -t inchange/web-nginx:${TAG} .
+          docker save inchange/web-nginx:${TAG} -o web-nginx.tar
 
       - name: Upload Docker image as artifact
         uses: actions/upload-artifact@v4

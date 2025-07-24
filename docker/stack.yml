@@ -1,6 +1,6 @@
 services:
   web-nginx:
-    image: inchange/web-nginx:latest
+    image: inchange/web-nginx:${TAG}
     networks:
       - traefik-public
     deploy:

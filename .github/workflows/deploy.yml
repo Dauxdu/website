@@ -28,6 +28,9 @@ jobs:
           name: web-nginx
           path: .
 
+      - name: Set short SHA
+        run: echo "GITHUB_SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh/
@@ -48,7 +51,9 @@ jobs:
           docker context create remote --docker "host=ssh://deploy"
           docker context use remote
 
-      - name: Deploy compose
+      - name: Deploy stack
+        env:
+          TAG: sha-${{ env.GITHUB_SHORT_SHA }}
         run: |
           docker load -i "web-nginx.tar"
 
