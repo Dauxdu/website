@@ -2,8 +2,16 @@ import React from "react"
 import { motion } from "framer-motion"
 import ProjectCard from "../components/ProjectCard"
 import { ProgressiveLoader, SkeletonCard } from "../components/LoadingStates"
+import { useRepositoryData } from "../hooks/useRepositoryData"
 
 const ProjectsSection = ({ content, sectionsLoaded }) => {
+  const {
+    repositoryData,
+    isLoading: repoLoading,
+    lastUpdated,
+    error,
+  } = useRepositoryData()
+
   return (
     <section className="py-20 px-6 relative" id="projects">
       <div className="max-w-6xl mx-auto relative z-10">
@@ -28,7 +36,12 @@ const ProjectsSection = ({ content, sectionsLoaded }) => {
         >
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {content.petProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} index={index} />
+              <ProjectCard
+                key={index}
+                project={project}
+                index={index}
+                repositoryData={repositoryData}
+              />
             ))}
           </div>
         </ProgressiveLoader>

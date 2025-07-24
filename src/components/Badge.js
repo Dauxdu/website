@@ -12,7 +12,7 @@ const Badge = ({
   const baseClasses = "font-medium rounded-full text-center transition-all"
 
   const variants = {
-    default: "bg-orange-500/20 text-orange-300 hover:bg-orange-500/30",
+    default: "bg-gray-700/50 text-gray-300 border border-gray-600/50",
     success: "bg-green-500/20 text-green-300",
     primary: "bg-blue-500/20 text-blue-300",
     gradient:

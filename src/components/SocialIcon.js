@@ -16,22 +16,20 @@ const SocialIcon = ({
   }
 
   const baseClasses =
-    "magnetic-element p-2 sm:p-3 backdrop-blur-sm rounded-full transition-colors bg-gray-700/50"
+    "p-2 sm:p-3 backdrop-blur-sm rounded-full transition-colors bg-gray-700/50"
   const colorClass = colors[color] || colors.orange
 
   return (
-    <motion.a
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={`${baseClasses} ${colorClass} ${className}`}
-      whileHover={{ scale: 1.1, y: -2 }}
-      whileTap={{ scale: 0.95 }}
       aria-label={label}
       {...props}
     >
       {Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5" />}
-    </motion.a>
+    </a>
   )
 }
 

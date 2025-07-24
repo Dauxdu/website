@@ -3,17 +3,13 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Github, ExternalLink, Code, Star, Users } from "lucide-react"
 import Card from "./Card"
 import Badge from "./Badge"
+import Button from "./Button"
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, repositoryData }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  const projectMetrics = {
-    0: { stars: 124, commits: 89, contributors: 3 },
-    1: { stars: 67, commits: 156, contributors: 2 },
-    2: { stars: 203, commits: 234, contributors: 5 },
-  }
-
-  const metrics = projectMetrics[index] || {
+  // Get metrics from repositoryData prop, fallback to 0
+  const metrics = repositoryData?.[index] || {
     stars: 0,
     commits: 0,
     contributors: 0,
@@ -103,7 +99,7 @@ const ProjectCard = ({ project, index }) => {
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-2 mb-6">
             {project.tech.map((tech, techIndex) => (
-              <Badge key={techIndex} variant="default" size="xs" hover={true}>
+              <Badge key={techIndex} variant="default" size="xs" hover={false}>
                 {tech}
               </Badge>
             ))}
@@ -111,25 +107,21 @@ const ProjectCard = ({ project, index }) => {
 
           {/* Action Buttons */}
           <div className="flex gap-3">
-            <motion.a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all flex-1 justify-center bg-gray-700/50 hover:bg-gray-600/50 text-white hover:text-white"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              onClick={() => window.open(project.link, "_blank")}
+              variant="code"
+              size="sm"
+              className="flex-1"
             >
               <Github className="w-4 h-4" />
               Code
-            </motion.a>
+            </Button>
 
-            <motion.a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all flex-1 justify-center bg-orange-600/20 hover:bg-orange-600/30 text-orange-300 hover:text-orange-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <Button
+              onClick={() => window.open(project.demo, "_blank")}
+              variant="demo"
+              size="sm"
+              className="flex-1"
             >
               <ExternalLink className="w-4 h-4" />
               <motion.span
@@ -138,7 +130,7 @@ const ProjectCard = ({ project, index }) => {
               >
                 Demo
               </motion.span>
-            </motion.a>
+            </Button>
           </div>
         </div>
       </Card>

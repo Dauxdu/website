@@ -29,7 +29,7 @@ const HeroSection = ({ content, sectionsLoaded, scrollToSection }) => {
             <motion.div
               className="p-8 rounded-3xl bg-gray-800/50 border border-gray-700/50 backdrop-blur-md"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <img
                 src={AssetsLoader.logo["inchange.svg"]}

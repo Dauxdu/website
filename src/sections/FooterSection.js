@@ -15,24 +15,21 @@ const FooterSection = ({ content, language, setLanguage }) => {
     <footer className="py-12 px-6 border-t border-gray-700">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <motion.div
-            className="text-center md:text-left"
-            whileHover={{ scale: 1.02 }}
-          >
+          <div className="text-center md:text-left">
             <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent mb-2">
               {content.name}
             </h3>
             <p className="text-sm sm:text-base text-gray-300">
               {content.about}
             </p>
-          </motion.div>
+          </div>
 
           <div className="flex items-center gap-4">
             <Button
               onClick={() => setLanguage(language === "en" ? "ru" : "en")}
               variant="ghost"
               size="sm"
-              className="magnetic-element bg-gray-700/50 hover:bg-gray-600/50 text-white"
+              className="bg-gray-700/50 hover:bg-gray-600/50 text-white"
             >
               <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
               {language === "en" ? "RU" : "EN"}
