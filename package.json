@@ -6,8 +6,7 @@
     "framer-motion": "^12.16.0",
     "lucide-react": "^0.513.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "^5.0.1"
+    "react-dom": "^19.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,14 +27,31 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-class-properties": "^7.27.1",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.27.1",
+    "@babel/plugin-transform-numeric-separator": "^7.27.1",
+    "@babel/plugin-transform-private-methods": "^7.27.1",
+    "@babel/plugin-transform-private-property-in-object": "^7.27.1",
+    "@eslint/config-array": "^0.21.0",
     "@eslint/js": "9.23.0",
+    "@eslint/object-schema": "^2.1.6",
+    "@jridgewell/sourcemap-codec": "^1.5.4",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "9.23.0",
+    "eslint": "^9.31.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.4",
+    "glob": "^11.0.3",
     "globals": "15.15.0",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "react-scripts": "^5.0.1",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.45.1",
+    "svgo": "^4.0.0",
+    "tailwindcss": "^3.4.17",
+    "workbox-webpack-plugin": "^7.3.0"
   }
 }
